@@ -1,0 +1,13 @@
+dependencies {
+    implementation project(':fire-captain-common')
+    
+    // Spring Cloud Config Server
+    implementation 'org.springframework.cloud:spring-cloud-config-server'
+    
+    // Security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    
+    // Test dependencies
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+}

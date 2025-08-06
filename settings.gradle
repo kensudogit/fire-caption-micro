@@ -1,0 +1,49 @@
+rootProject.name = 'fire-captain-microservices'
+
+// マイクロサービス定義
+include 'fire-captain-gateway'
+include 'fire-captain-discovery'
+include 'fire-captain-config'
+include 'fire-captain-emergency-report'
+include 'fire-captain-dispatch'
+include 'fire-captain-scene-support'
+include 'fire-captain-completion-report'
+include 'fire-captain-data-analysis'
+include 'fire-captain-common'
+include 'fire-captain-monitoring'
+
+// プロジェクト説明
+gradle.beforeProject { project ->
+    switch (project.name) {
+        case 'fire-captain-gateway':
+            project.description = 'API Gateway for Fire Captain Microservices'
+            break
+        case 'fire-captain-discovery':
+            project.description = 'Service Discovery (Eureka Server)'
+            break
+        case 'fire-captain-config':
+            project.description = 'Configuration Server'
+            break
+        case 'fire-captain-emergency-report':
+            project.description = 'Emergency Report Microservice'
+            break
+        case 'fire-captain-dispatch':
+            project.description = 'Dispatch Microservice'
+            break
+        case 'fire-captain-scene-support':
+            project.description = 'Scene Support Microservice'
+            break
+        case 'fire-captain-completion-report':
+            project.description = 'Completion Report Microservice'
+            break
+        case 'fire-captain-data-analysis':
+            project.description = 'Data Analysis Microservice'
+            break
+        case 'fire-captain-common':
+            project.description = 'Common Libraries and DTOs'
+            break
+        case 'fire-captain-monitoring':
+            project.description = 'Monitoring and Observability'
+            break
+    }
+}

@@ -1,0 +1,81 @@
+spring:
+  application:
+    name: fire-captain-discovery
+  
+  profiles:
+    active: dev
+  
+  cloud:
+    config:
+      uri: http://localhost:8888
+      fail-fast: true
+
+server:
+  port: 8761
+  compression:
+    enabled: true
+    mime-types: application/json,application/xml
+    min-response-size: 512
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${server.port}
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 1000
+    response-cache-update-interval-ms: 1000
+    peer-eureka-nodes-update-interval-ms: 1000
+    renewal-percent-threshold: 0.85
+    renewal-threshold-update-interval-ms: 1000
+    peer-eureka-status-refresh-time-interval-ms: 1000
+    wait-time-in-ms-when-sync-empty: 0
+    peer-node-connect-timeout-ms: 200
+    peer-node-connection-idle-timeout-seconds: 30
+    peer-node-read-timeout-ms: 200
+    peer-node-total-conn-timeout-ms: 200
+    peer-node-total-conn-idle-timeout-seconds: 30
+    peer-node-connection-timeout-ms: 200
+    peer-node-connection-idle-timeout-seconds: 30
+    peer-node-read-timeout-ms: 200
+    peer-node-total-conn-timeout-ms: 200
+    peer-node-total-conn-idle-timeout-seconds: 30
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: when-authorized
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    tags:
+      application: fire-captain-discovery
+      service: discovery
+
+logging:
+  level:
+    com.firecaptain: INFO
+    com.netflix.eureka: DEBUG
+    org.springframework.security: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+
+# Custom settings
+fire-captain:
+  discovery:
+    dashboard:
+      enabled: true
+      title: "Fire Captain Service Discovery"
+    security:
+      enabled: false

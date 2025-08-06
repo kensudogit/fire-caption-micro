@@ -1,0 +1,13 @@
+dependencies {
+    implementation project(':fire-captain-common')
+    
+    // Eureka Server
+    implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-server'
+    
+    // Security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    
+    // Test dependencies
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+}
